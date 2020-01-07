@@ -1,0 +1,16 @@
+<button (click)="return()">Return to Home Screen</button><br><br>
+
+<app-question-list></app-question-list>
+
+<form class="form-signin" (submit)="Create()">
+    <label class="primary" for="title"><b>Quiz Title(Required)</b></label><br>
+    <input type="text" class="input-form" placeholder="Enter title" id="title" name="title" required autofocus
+        [(ngModel)]="quiz.title"><br>
+
+    <label class="primary" for="questions"><b>Enter ID of questions you want to include in quiz separated by
+            commas.</b></label><br>
+    <input type="text" class="input-form" placeholder="Enter questions" id="questions" name="questions" autofocus
+        [(ngModel)]="quiz.questionSequence"><br>
+
+    <button type="button" type="submit">Create</button><br>
+</form>

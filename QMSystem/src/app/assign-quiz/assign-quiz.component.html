@@ -1,0 +1,20 @@
+<button (click)="return()">Return to Home Screen</button><br><br>
+
+<app-quiz-list></app-quiz-list>
+<app-user-list></app-user-list>
+
+<form class="form-signin" (submit)="Assign()">
+    <label class="primary" for="quizid"><b>Quiz ID to Assign</b></label><br>
+    <input type="text" class="input-form" placeholder="Enter Quiz ID" id="quizid" name="quizid" required autofocus
+        [(ngModel)]="assignment.quizid"><br>
+
+    <label class="primary" for="userid"><b>User ID to Assign</b></label><br>
+    <input type="text" class="input-form" placeholder="Enter User ID" id="userid" name="userid" autofocus
+        [(ngModel)]="assignment.userid"><br>
+
+    <label class="primary" for="attempts"><b>Max Attempts</b></label><br>
+    <input type="text" class="input-form" placeholder="Enter Max Attempts" id="attempts" name="attempts" autofocus
+        [(ngModel)]="assignment.attempts"><br>
+
+    <button type="button" type="submit">Assign</button><br>
+</form>

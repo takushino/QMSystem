@@ -1,0 +1,29 @@
+<button (click)="return()">Return to Home Screen</button><br><br>
+
+<form class="form-signin" (submit)="Create()">
+    <label class="primary" for="question"><b>Question Text (Required)</b></label><br>
+    <input type="text" class="input-form" placeholder="Enter question" id="question" name="question" required autofocus
+        [(ngModel)]="question.question"><br>
+
+    <label class="primary" for="correct"><b>Correct Answer (Required)</b></label><br>
+    <input type="text" class="input-form" placeholder="Enter Correct Answer" id="correct" name="correct" required
+        autofocus [(ngModel)]="question.correct"><br>
+
+    <label class="primary" for="wrong1"><b>Wrong Answer (Required)</b></label><br>
+    <input type="text" class="input-form" placeholder="Enter 1st Wrong Answer" id="wrong1" name="wrong1" required
+        autofocus [(ngModel)]="question.wrong1"><br>
+
+    <label class="primary" for="wrong2"><b>Wrong Answer</b></label><br>
+    <input type="text" class="input-form" placeholder="Enter 2nd Wrong Answer" id="wrong2" name="wrong2" autofocus
+        [(ngModel)]="question.wrong2"><br>
+
+    <label class="primary" for="wrong3"><b>Wrong Answer</b></label><br>
+    <input type="text" class="input-form" placeholder="Enter 3rd Wrong Answer" id="wrong3" name="wrong3" autofocus
+        [(ngModel)]="question.wrong3"><br>
+
+    <label class="primary" for="explanation"><b>Question Explanation</b></label><br>
+    <input type="text" class="input-form" placeholder="Enter Explanation" id="explanation" name="explanation" autofocus
+        [(ngModel)]="question.explanation"><br>
+
+    <button type="button" type="submit">Create</button><br>
+</form>
