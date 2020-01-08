@@ -17,7 +17,7 @@ const routes: Routes = [{
   component: ManagerMainComponent
 }, {
   path: 'umain',
-  component: UserMainComponent
+  component: UserAssignedQuizzesComponent
 }, {
   path: 'makeQuestion',
   component: MakeQuestionComponent
@@ -27,9 +27,6 @@ const routes: Routes = [{
 }, {
   path: 'AssignQuiz',
   component: AssignQuizComponent
-}, {
-  path: 'viewMyQuizzes',
-  component: UserAssignedQuizzesComponent
 }, {
   path: '**',
   redirectTo: 'login'

@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import models.Quiz;
 import utility.ConnectionUtil;
 import utility.Exceptions;
@@ -14,9 +17,15 @@ import utility.MagicWords;
 
 public class QuizDaoImpl implements QuizDao {
 
+	private final Logger logger = LogManager.getLogger(getClass());
+
 	@Override
 	public Quiz extractQuiz(ResultSet rs) throws SQLException {
 		return new Quiz(rs.getInt("QUIZ_ID"), rs.getString("QUIZ_NAME"), rs.getInt("QUIZ_CREATOR"));
+	}
+	
+	public Quiz extractQuizForUser(ResultSet rs) throws SQLException {
+		return new Quiz(rs.getInt("QUIZ_ID"), rs.getString("QUIZ_NAME"), rs.getInt("MAX_ATTEMPTS"), rs.getInt("CURRENT_ATTEMPTS"));
 	}
 
 	@Override
@@ -71,7 +80,7 @@ public class QuizDaoImpl implements QuizDao {
 			stmt.setInt(1, userID);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				result.add(extractQuiz(rs));
+				result.add(extractQuizForUser(rs));
 			}
 			return result;
 		} catch (SQLException e) {

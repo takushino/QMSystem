@@ -29,18 +29,19 @@ public class QuizDispatcher implements Dispatcher {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
+		Quiz quiz = null;
 		try {
-			Quiz quiz = (Quiz) StoredMapper.read(req.getInputStream(), Quiz.class);
+			quiz = (Quiz) StoredMapper.read(req.getInputStream(), Quiz.class);
 			quizDao.createQuiz(quiz);
-			int id = quizDao.getQuizWithTitle(quiz.getTitle()).getQuiz_id();
-			logger.info("ID = " + id);
-			ConnectQuizToQuestion(quiz, id);
 			resp.setStatus(HttpServletResponse.SC_OK);
 		} catch (IOException e) {
 			resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 		}
+		int id = quizDao.getQuizWithTitle(quiz.getTitle()).getQuiz_id();
+		logger.info("ID = " + id);
+		ConnectQuizToQuestion(quiz, id);
 	}
-	
+
 	private void ConnectQuizToQuestion(Quiz quiz, int id) {
 		String questions = quiz.getQuestionSequence().replaceAll("[^0-9,]", "");
 		String[] parts = questions.split(",");
