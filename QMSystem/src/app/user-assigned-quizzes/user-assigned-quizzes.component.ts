@@ -14,6 +14,8 @@ export class UserAssignedQuizzesComponent implements OnInit {
   userSubscription: any;
   user: any;
 
+  quizID: any;
+
   constructor(private router: Router, private authService: AuthService,
               private assignedQuizzesService: AssignedQuizzesService, private takeQuizService: TakeQuizService) { }
 
@@ -29,9 +31,5 @@ export class UserAssignedQuizzesComponent implements OnInit {
 
   takeQuiz(quizID: any) {
     this.takeQuizService.takeQuiz(quizID);
-  }
-
-  viewGrades(quizID: any) {
-
   }
 }

@@ -8,8 +8,8 @@ export class TakeQuizService {
 
   constructor(private httpClient: HttpClient) { }
 
-  takeQuiz(quizID: any) {
-    this.httpClient.post('http://localhost:8080/QMSystem/takeQuiz', quizID, {
+  takeQuiz(id: any) {
+    this.httpClient.post('http://localhost:8080/QMSystem/takeQuiz', id, {
       withCredentials: true // what the heck is this line
     }).subscribe( //
       data => { // if successful / 200's is returned

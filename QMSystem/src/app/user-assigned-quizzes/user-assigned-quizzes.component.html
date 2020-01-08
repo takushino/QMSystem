@@ -1,1 +1,8 @@
-<div id='assignedquizbox'></div>
+<div id='assignedquizbox'></div><br>
+
+<form class="form-signin" (submit)="takeQuiz()">
+    <label class="primary" for="id"><b>Enter ID of quiz to take</b></label><br>
+    <input type="number" class="input-form" placeholder="Quiz ID" id="id" name="id" required autofocus
+        [(ngModel)]="quizID"><br>
+    <button type="button" type="submit">Take Quiz</button><br>
+</form>

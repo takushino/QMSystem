@@ -27,7 +27,7 @@ public class TakeQuizDispatcher implements Dispatcher {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		try {
-			int quizID = (Integer) StoredMapper.read(req.getInputStream(), Integer.class);
+			int quizID = ((Quiz) StoredMapper.read(req.getInputStream(), Quiz.class)).getQuiz_id();
 			List<Question> toTake = questionDao.getQuestionOfQuiz(quizID);
 
 			if (toTake == null) {

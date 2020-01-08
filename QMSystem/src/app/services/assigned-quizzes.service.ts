@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { TakeQuizService } from './take-quiz.service';
 
 @Injectable({
   providedIn: 'root'
@@ -24,18 +25,18 @@ export class AssignedQuizzesService {
   }
 
   tablemaker(rows: any) {
+    let quizValue = 0;
     let html = '<table border=\'1|1\'>';
     html += '<tr><td>Quiz<br>ID</td><td>Quiz<br>Title</td><td>Max Attempts</td>';
-    html += '<td>Current Attempts</td><td>Take<br>Quiz</td><td>View<br>Past<br>Grades</td></tr>';
+    html += '<td>Current Attempts</td></tr>';
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < rows.length; i++) {
+      quizValue = rows[i].quiz_id;
       html += '<tr>';
-      html += '<td>' + rows[i].quiz_id + '</td>';
+      html += '<td>' + quizValue + '</td>';
       html += '<td>' + rows[i].title + '</td>';
       html += '<td>' + rows[i].maxAttempts + '</td>';
       html += '<td>' + rows[i].currentAttempts + '</td>';
-      html += '<td><button (click)="takeQuiz(' + rows[i].quizid + ')">Take Quiz</button></td>';
-      html += '<td><button (click)="viewGrades(' + rows[i].quizid + ')">View Past Grades</button></td>';
       html += '</tr>';
     }
     html += '</table>';
