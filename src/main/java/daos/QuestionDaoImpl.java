@@ -60,4 +60,20 @@ public class QuestionDaoImpl implements QuestionDao {
 		return null;
 	}
 
+	@Override
+	public List<Question> getQuestionOfQuiz(int quizID) {
+		List<Question> result = new ArrayList<Question>();
+		try (Connection c = ConnectionUtil.getConnection()) {
+			PreparedStatement stmt = c.prepareCall(MagicWords.QUESTION_FOR_QUIZ);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				result.add(extractQuestion(rs));
+			}
+			return result;
+		} catch (SQLException e) {
+			Exceptions.logSQLException(e);
+		}
+		return null;
+	}
+
 }

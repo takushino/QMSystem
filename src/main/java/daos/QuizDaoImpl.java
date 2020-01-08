@@ -57,6 +57,22 @@ public class QuizDaoImpl implements QuizDao {
 	}
 
 	@Override
+	public Quiz getQuizWithID(int id) {
+		try (Connection c = ConnectionUtil.getConnection()) {
+			PreparedStatement stmt = c.prepareCall(MagicWords.QUIZ_BY_ID);
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				Quiz result = extractQuiz(rs);
+				return result;
+			}
+		} catch (SQLException e) {
+			Exceptions.logSQLException(e);
+		}
+		return null;
+	}
+
+	@Override
 	public List<Quiz> getAllQuizzes() {
 		List<Quiz> result = new ArrayList<Quiz>();
 		try (Connection c = ConnectionUtil.getConnection()) {

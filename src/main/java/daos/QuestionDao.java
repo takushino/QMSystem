@@ -16,4 +16,6 @@ public interface QuestionDao {
 	List<Question> getAllQuestions();
 
 	List<Question> getMyQuestions(int userID);
+
+	List<Question> getQuestionOfQuiz(int quizID);
 }

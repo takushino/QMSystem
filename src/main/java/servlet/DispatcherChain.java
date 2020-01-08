@@ -28,10 +28,10 @@ public class DispatcherChain implements Dispatcher {
 		this.dispatchers.add(new QuizAssignDispatcher());// manager assigning quiz
 		this.dispatchers.add(new UserDisplayDispatcher());// manager viewing users
 		this.dispatchers.add(new UsersQuizzesDispatcher());// user viewing all assigned quizzes
+		this.dispatchers.add(new TakeQuizDispatcher());// user takes quiz
 		
-		
-		this.dispatchers.add(new QuizzesDispatcher());// manager viewing all quizzes
 		this.dispatchers.add(new GradesDispatcher());//
+		
 	}
 
 	/*

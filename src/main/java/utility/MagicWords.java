@@ -15,12 +15,16 @@ public final class MagicWords {
 			+ "VALUES (QMS_Questions_seq.nextval, ?, ?, ?, ?, ?, ?, ?)";
 
 	public static final String GET_ALL_QUESIONS = "SELECT * FROM qms_questions";
+	
+	public static final String QUESTION_FOR_QUIZ = "SELECT qms_questions.question_id, qms_questions.question_problem, qms_questions.question_correct, qms_questions.question_wrong1, qms_questions.question_wrong2, qms_questions.question_wrong3 FROM (QMS_QUIZZES INNER JOIN QMS_QUIZ_QUESTION ON QMS_QUIZZES.QUIZ_ID = QMS_QUIZ_QUESTION.QUIZ_ID) INNER JOIN QMS_QUESTIONS ON QMS_QUESTIONS.QUESTION_ID = QMS_QUIZ_QUESTION.QUESTION_ID WHERE qms_quizzes.quiz_id = ?";
 
 	// QuizImplMagicWords
 	public static final String QUIZ_INSERT_QUERY = "INSERT INTO qms_quizzes (QUIZ_ID, QUIZ_NAME, QUIZ_CREATOR)"
 			+ "VALUES (QMS_Quizzes_seq.nextval, ?, ?)";
 
 	public static final String QUIZ_BY_TITLE = "SELECT * FROM qms_quizzes WHERE QUIZ_NAME = ?";
+	
+	public static final String QUIZ_BY_ID = "SELECT * FROM qms_quizzes WHERE QUIZ_BY_ID = ?";
 
 	public static final String QUIZ_QUESTION_RELATOR = "INSERT INTO QMS_Quiz_Question (QUIZ_ID, QUESTION_ID)"
 			+ "VALUES (?, ?)";

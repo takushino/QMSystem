@@ -18,4 +18,6 @@ public interface QuizDao {
 	Quiz getQuizWithTitle(String title);
 
 	List<Quiz> getAllQuizzes();
+
+	Quiz getQuizWithID(int id);
 }
